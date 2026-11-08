@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iban Dev — Portfolio</title>
+<meta name="description" content="Portfolio pribadi Iban Dev: game, coding project, dan desain grafis.">
+<style>
+:root{--bg:#090b12;--panel:#111521;--panel2:#171c2b;--text:#f4f6ff;--muted:#a5aec5;--accent:#8b5cf6;--cyan:#22d3ee;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 10%,rgba(139,92,246,.18),transparent 38%),radial-gradient(ellipse at 85% 35%,rgba(34,211,238,.11),transparent 35%),#090b12}
+a{color:inherit;text-decoration:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:17px 7%;background:rgba(9,11,18,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:1.2rem;white-space:nowrap}.logo span{color:var(--cyan)}.nav-emblem{display:grid;place-items:center;flex-shrink:0;margin-left:18px}.nav-emblem img{width:48px;height:48px;object-fit:cover;border-radius:13px;border:1px solid rgba(34,211,238,.45);box-shadow:0 0 22px rgba(34,211,238,.16)}
+.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{font-size:.9rem;color:var(--muted);transition:.25s}.navlinks a:hover{color:white}
+.menu-toggle{display:none;background:transparent;color:white;border:1px solid var(--line);padding:8px 11px;border-radius:10px}
+section{padding:100px 7%}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:130px;position:relative}
+.hero-inner{max-width:1120px;margin:auto;width:100%;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:60px}
+.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid rgba(34,211,238,.25);background:rgba(34,211,238,.07);color:#8eeeff;padding:8px 13px;border-radius:999px;font-size:.8rem;letter-spacing:.04em}
+.dot{width:7px;height:7px;background:#34d399;border-radius:50%;box-shadow:0 0 12px #34d399}
+h1{font-size:clamp(3.2rem,8vw,6.5rem);line-height:.98;letter-spacing:-.07em;margin:24px 0}
+.gradient{background:linear-gradient(110deg,#fff 5%,#a78bfa 48%,#67e8f9 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;color:var(--muted);font-size:1.08rem;line-height:1.8}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border-radius:13px;font-weight:700;font-size:.92rem;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px)}.primary{background:linear-gradient(120deg,var(--accent),#6366f1);border:0;box-shadow:0 8px 30px rgba(139,92,246,.25)}.secondary{background:rgba(255,255,255,.04)}
+.visual{display:grid;place-items:center;position:relative;min-height:390px}
+.orbit{width:min(350px,75vw);aspect-ratio:1;border-radius:50%;border:1px solid rgba(167,139,250,.22);display:grid;place-items:center;position:relative;animation:float 6s ease-in-out infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(34,211,238,.25)}.orbit:before{inset:25px}.orbit:after{inset:55px}
+.avatar{width:190px;height:190px;border-radius:35px;display:grid;place-items:center;font-size:4rem;font-weight:900;letter-spacing:-.08em;background:linear-gradient(145deg,#8b5cf6,#0ea5e9);box-shadow:0 0 70px rgba(139,92,246,.35);transform:rotate(-8deg)}
+.float-tag{position:absolute;padding:11px 14px;border-radius:12px;background:#171c2b;border:1px solid var(--line);font-size:.85rem;box-shadow:0 12px 30px #0005}.tag1{top:12%;right:0}.tag2{bottom:12%;left:0}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.section-head{max-width:760px;margin:0 auto 45px;text-align:center}.kicker{color:var(--cyan);font-weight:800;text-transform:uppercase;font-size:.75rem;letter-spacing:.16em}.section-head h2{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.05em;margin:12px 0}.section-head p{color:var(--muted);line-height:1.7}
+.about-grid,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1120px;margin:auto}
+.panel{background:linear-gradient(145deg,rgba(23,28,43,.92),rgba(15,18,29,.92));border:1px solid var(--line);border-radius:22px;padding:25px;transition:transform .3s,border-color .3s}.panel:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.5)}
+.icon{font-size:1.8rem;margin-bottom:18px}.panel h3{font-size:1.15rem;margin-bottom:10px}.panel p{color:var(--muted);line-height:1.7;font-size:.93rem}
+.skills{max-width:1120px;margin:28px auto 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.chip{padding:9px 13px;border-radius:999px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.22);font-size:.83rem;color:#d7c9ff}
+.project-card{overflow:hidden;padding:0}.project-art{height:220px;display:grid;place-items:center;font-size:3rem;background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(34,211,238,.12));border-bottom:1px solid var(--line);overflow:hidden}.project-art img{width:100%;height:100%;object-fit:cover;display:block}.project-art .app-icon{width:124px;height:124px;object-fit:cover;border-radius:25px;box-shadow:0 12px 30px #0005}.project-body{padding:22px}.project-body p{margin:8px 0 16px}.project-meta{font-size:.75rem;color:#a5aec5;letter-spacing:.06em;text-transform:uppercase}.project-link{color:#8eeeff;font-size:.9rem;font-weight:700}
+.designs{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.designs-single{grid-template-columns:minmax(0,360px);justify-content:center}.design-tile{aspect-ratio:4/5;border-radius:20px;border:1px solid var(--line);overflow:hidden;display:flex;align-items:end;padding:22px;position:relative;background:linear-gradient(145deg,#3b1d78,#101827 60%,#075985)}.design-tile:nth-child(2){background:linear-gradient(145deg,#0f766e,#111827 60%,#9333ea)}.design-tile:nth-child(3){background:linear-gradient(145deg,#be123c,#171827 60%,#f59e0b)}.design-tile:before{content:"";position:absolute;width:200px;height:200px;border:1px solid #ffffff30;border-radius:50%;top:15%;left:15%;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05}.design-tile h3{position:relative;font-size:1.2rem}.design-tile p{position:relative;color:#d2d7e5;font-size:.85rem;margin-top:6px}
+.contact-box{max-width:850px;margin:auto;text-align:center;padding:45px 25px;border-radius:28px;background:linear-gradient(130deg,rgba(139,92,246,.15),rgba(34,211,238,.07));border:1px solid var(--line)}.contact-box h2{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.05em;margin:12px 0}.contact-box p{color:var(--muted);line-height:1.7;margin-bottom:25px}
+footer{padding:28px 7%;border-top:1px solid var(--line);color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:850px){.hero-inner{grid-template-columns:1fr;gap:20px}.visual{min-height:330px;order:-1}.hero-copy{text-align:center}.hero-copy p{margin:auto}.actions{justify-content:center}.about-grid,.cards,.designs{grid-template-columns:1fr 1fr}.navlinks{gap:14px}}
+@media(max-width:600px){.nav{padding:10px 4%;gap:8px}.nav-emblem{margin-left:auto}.nav-emblem img{width:40px;height:40px}.logo{font-size:1rem}.menu-toggle{display:block}.navlinks{display:none;position:absolute;top:65px;left:5%;right:5%;padding:17px;background:#111521;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{padding:9px}section{padding:78px 5%}.hero{padding-top:100px}.about-grid,.cards,.designs{grid-template-columns:1fr}.visual{min-height:280px}.orbit{width:260px}.avatar{width:145px;height:145px;font-size:3.2rem}.float-tag{font-size:.75rem}.tag1{right:-4px}.tag2{left:-4px}footer{padding:25px 5%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="#home">IBAN<span>.</span>DEV</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+  <div class="navlinks" id="navlinks">
+    <a href="#home">Home</a><a href="#about">Tentang</a><a href="#projects">Project</a><a href="#apps">App Creator</a><a href="#design">Desain</a><a href="#contact">Kontak</a>
+  </div>
+  <a class="nav-emblem" href="#home" aria-label="Logo Spinsa Coding Klub"><img src="assets/spinsa-coding-klub-logo.jpg" alt="Logo Spinsa Coding Klub"></a>
+</nav>
+<section class="hero" id="home">
+ <div class="hero-inner">
+  <div class="hero-copy">
+   <div class="eyebrow"><span class="dot"></span> SPINSA CODING KLUB · CREATIVE DEVELOPER</div>
+   <h1>Halo, aku<br><span class="gradient">Iban Dev.</span></h1>
+   <p>Aku programmer pemula yang suka menciptakan game, membangun aplikasi, dan merancang desain digital. Selamat datang di tempat semua project-ku berkumpul!</p>
+   <div class="actions"><a class="btn primary" href="#projects">Jelajahi Project <span>↗</span></a><a class="btn secondary" href="#about">Kenali Aku</a></div>
+  </div>
+  <div class="visual">
+   <div class="orbit"><div class="avatar">ID</div><div class="float-tag tag1">🎮 Game Creator</div><div class="float-tag tag2">🎨 Graphic Design</div></div>
+  </div>
+ </div>
+</section>
+<section id="about">
+ <div class="section-head reveal"><div class="kicker">Tentang Aku</div><h2>Belajar. Berkarya. <span class="gradient"> berkembang.</span></h2><p>Masih dalam perjalanan sebagai developer, tapi selalu punya ide baru untuk diwujudkan.</p></div>
+ <div class="about-grid">
+  <article class="panel reveal"><div class="icon">🎨</div><h3>Divisi Desain Grafis</h3><p>Membuat tampilan visual, poster, elemen UI, dan desain yang punya karakter.</p></article>
+  <article class="panel reveal"><div class="icon">🧩</div><h3>Kemampuan All Role</h3><p>Siap mencoba berbagai peran: ide, desain, coding, testing, sampai menyusun project.</p></article>
+  <article class="panel reveal"><div class="icon">🚀</div><h3>Terus Eksplorasi</h3><p>Suka belajar teknologi baru dan mengubah ide sederhana menjadi karya yang bisa dicoba.</p></article>
+ </div>
+ <div class="skills reveal"><span class="chip">MIT App Inventor</span><span class="chip">Game Development</span><span class="chip">UI Design</span><span class="chip">Graphic Design</span><span class="chip">Creative Problem Solving</span></div>
+</section>
+<section id="projects">
+ <div class="section-head reveal"><div class="kicker">My Projects</div><h2>Yang sudah <span class="gradient">kubuat.</span></h2><p>Project coding dan game yang pernah aku kerjakan. Link demo bisa kamu ganti dengan project-mu.</p></div>
+ <div class="cards">
+  <article class="panel project-card reveal"><div class="project-art"><img src="assets/blocky-puzzle.png.jpg" alt="Gambar game blok yang diberikan"></div><div class="project-body"><div class="project-meta">GAME · ANDROID APK</div><h3>Blocky Puzzle</h3><p>Game puzzle blok dengan nuansa arcade klasik.</p><a class="project-link" href="downloads/BlockyPuzzle.apk" download>Download APK ↓</a></div></article>
+  <article class="panel project-card reveal"><div class="project-art"><img src="assets/gallery-design.jpg" alt="Desain galeri yang diberikan"></div><div class="project-body"><div class="project-meta">DESAIN · KARYA VISUAL</div><h3>Gallery App UI</h3><p>Desain galeri dari karya visual yang kamu kirim.</p><a class="project-link" href="#design">Lihat desain ↗</a></div></article>
+  <article class="panel project-card reveal"><div class="project-art"><img class="app-icon" src="assets/kalender-tabungan-icon.jpg" alt="Ikon Kalender Tabungan yang kamu kirim"></div><div class="project-body"><div class="project-meta">APP · ANDROID APK</div><h3>Kalender Tabungan</h3><p>Aplikasi kalender tabungan untuk dicoba di perangkat Android.</p><a class="project-link" href="downloads/Kalender-Tabungan-1.2.apk" download>Download APK ↓</a></div></article>
+  <article class="panel project-card reveal"><div class="project-art">💡</div><div class="project-body"><div class="project-meta">WEB · EXPERIMENT</div><h3>Project Berikutnya</h3><p>Ruang untuk karya terbaru yang sedang aku kembangkan.</p><a class="project-link" href="#contact">Segera hadir ↗</a></div></article>
+ </div>
+</section>
+
+<section id="apps">
+ <div class="section-head reveal"><div class="kicker">App Creator</div><h2>Aplikasi yang <span class="gradient">kubuat.</span></h2><p>Download aplikasi atau project yang ingin kamu coba. Setiap karya dilengkapi ikon dan file unduhan.</p></div>
+ <div class="cards">
+  <article class="panel project-card reveal"><div class="project-art" style="background:linear-gradient(135deg,rgba(245,158,11,.20),rgba(139,92,246,.13))"><img class="app-icon" src="assets/kalender-tabungan-icon.jpg" alt="Ikon Kalender Tabungan yang kamu kirim"></div><div class="project-body"><div class="project-meta">APP · ANDROID PROJECT</div><h3>Kalender Tabung</h3><p>Aplikasi kalender tabungan. File project ZIP bisa diunduh untuk dikembangkan lebih lanjut.</p><a class="project-link" href="downloads/Kalender-Tabungan-1.2.apk" download>Download APK ↓</a><br><a class="project-link" href="downloads/KalenderTabung_v3.zip" download>Download Source ZIP ↓</a></div></article>
+  <article class="panel project-card reveal"><div class="project-art" style="background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(34,211,238,.12))"><img class="app-icon" src="assets/blocky-puzzle.png.jpg" alt="Gambar game blok yang diberikan"></div><div class="project-body"><div class="project-meta">GAME APP · APK</div><h3>Blocky Puzzle</h3><p>Game puzzle blok dengan gaya arcade klasik. Bisa diunduh sebagai APK Android.</p><a class="project-link" href="downloads/BlockyPuzzle.apk" download>Download APK ↓</a></div></article>
+ </div>
+</section>
+
+<section id="design">
+ <div class="section-head reveal"><div class="kicker">Design Gallery</div><h2>Karya <span class="gradient">visual-ku.</span></h2><p>Karya visual-ku — memakai gambar asli yang aku unggah.</p></div>
+ <div class="designs designs-single">
+  <div class="design-tile reveal" style="background:#071a3d url(assets/gallery-design.jpg) center/cover no-repeat"><div><h3>Galeri UI</h3><p>Karya visual-ku</p></div></div>
+ </div>
+</section>
+<section id="contact">
+ <div class="contact-box reveal"><div class="kicker">Let's Connect</div><h2>Punya ide menarik?</h2><p>Terima kasih sudah mampir ke portfolio Iban Dev. Web ini akan terus berkembang seiring karya-karya baru.</p><a class="btn primary" href="mailto:iban.dev@example.com">Hubungi Aku ✉</a></div>
+</section>
+<footer><span>©iban</span><span>Design · Code · Create</span></footer>
+<script>
+const toggle=document.getElementById('menuToggle'),links=document.getElementById('navlinks');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
